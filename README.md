@@ -47,7 +47,7 @@ With email and password
 
 import 'firebase/firestore';
 
-### Base Reference
+### Collection Reference
 
     let ref = firebase.firestore().collection(collectionName)
 
@@ -55,7 +55,7 @@ import 'firebase/firestore';
 
     let doc = firebase.firestore().collection(collectionName).doc(docId)
 
-### CRUD operations
+### Getting Firestore data
 
 Get the data of a document
 
@@ -67,13 +67,34 @@ Get all the data of a collection
     let allData = await ref.get();
     allData.forEach(doc => // doc.id & doc.data());
 
-Setting, updating and deleting data
+### Setting Firestore data
 
+Adding data to a collection
+
+    await ref.add(data);
+
+Setting data to a document
+    
     await ref.doc(docId).set(data);
+
+### Updating Firestore data
+
+Updating collection data
     
     await ref.doc(docId).update(updatedData);
-    
+
+### Deleting Firestore data
+
+Deleting a document
+
     await ref.doc(docId).delete();
+
+Deleting a field
+
+    let removefield = ref.update({
+        fieldName: firebase.firestore.FieldValue.delete()
+    });
+
 
 ### Conditions
 
