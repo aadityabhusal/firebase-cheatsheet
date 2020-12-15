@@ -43,6 +43,8 @@ With email and password
     firebase.auth().currentUser;
     // return user or null
 
+# Security Rules
+
 # Firestore
 
 import 'firebase/firestore';
