@@ -1,6 +1,17 @@
 # Firebase Cheatsheet
 A cheatsheet for using firebase
 
+### Table of Contents
+
+* [Authentication](#authentication)
+* [Security Rules](#security-rules)
+* [Firestore](#firestore)
+* [Realtime Database](#realtime-database)
+* [Functions](#functions)
+* [Cloud Storage](#cloud-storage)
+* [Hosting](#hosting)
+
+
 # Notes
 
 * Avoiding Vendor lockin by creating wrapper function for every firebase function used
@@ -137,3 +148,8 @@ Type 'firebase init' and select 'Functions' and follow the required steps in the
 
 To deploy use 'firebase deploy'
 
+
+# Cloud Storage
+
+
+# Hosting
