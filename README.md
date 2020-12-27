@@ -56,6 +56,70 @@ With email and password
 
 # Security Rules
 
+Security Rules controls who can and can't read and write data into firebase databases and storage.
+
+### Cloud Firestore and Cloud Storage syntax
+
+    rules_version = '2'; // Latest version here
+    service <<name>> {
+        match <<path>> {
+            allow <<methods>> : if <<condition>>
+        }
+    }
+
+### Cloud Firestore example
+
+    rules_version = '2';
+    service cloud.firestore {
+        match /database/{database}/documents {
+            match /{document=**}{
+                allow write : if false;
+                allow read: if request.auth.uid !== null;
+            }
+
+            match /users/{userId} {
+                allow write: if request.auth.uid == userId;
+            }
+        }
+    }
+
+
+### Realtime Database syntax
+
+    {
+        "rules": {
+            "<<path>>": {
+                ".read": <<condition>>,
+                ".write": <<condition>>,
+                ".validate": <<condition>>
+                "<<path>>": {
+                    "<<path>>": {
+                        ".read": <<condition>>,
+                        ".write": <<condition>>
+                    }
+                }
+            }
+        }
+    }
+
+### Realtime Database example
+
+    {
+        "rules": {
+            ".read": "true",
+            ".write": "auth!=null",
+            "posts": {
+                "$userId": {
+                    "$postId": {
+                        ".write": true
+                    }
+                }
+            } 
+        }
+    }
+
+Learn the Firebase Security Rules Language [here](https://firebase.google.com/docs/rules/rules-language).
+
 # Firestore
 
 import 'firebase/firestore';
